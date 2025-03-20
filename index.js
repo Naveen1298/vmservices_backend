@@ -17,7 +17,7 @@ app.post('/addProduct', (req, res) => {
 
 app.get('/products', async (req, res) => {
     try {
-        const products = await TestModel.find({});
+        const products = await TestModel.find({}).sort({_id: -1});
         res.json(products);
     } catch (er) {
         res.status(500).json({ message: er?.message });
