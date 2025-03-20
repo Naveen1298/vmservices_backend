@@ -7,8 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// mongoose.connect('mongodb://127.0.0.1:27017/test_db');
-mongoose.connect('mongodb+srv://vmservices:zFUmjTuBOnUnzjA4@cluster1.o76gc.mongodb.net/test_db');
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.post('/addProduct', (req, res) => {
     TestModel.create(req.body)
@@ -25,6 +24,7 @@ app.get('/products', async (req, res) => {
     }
 });
 
-app.listen(5000, () => {
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
     console.log("Server is ruuning 5000");
 });
