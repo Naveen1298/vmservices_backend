@@ -7,7 +7,8 @@ const TestSchema = new mongoose.Schema({
     price: Number,
     deliveryFee: Number,
     imageURL: String,
-    offerBanner: String
+    offerBanner: String,
+    rating: Number
 });
 
 const TestModel = mongoose.model("products", TestSchema);
