@@ -8,7 +8,8 @@ const TestSchema = new mongoose.Schema({
     deliveryFee: Number,
     imageURL: String,
     offerBanner: String,
-    rating: Number
+    rating: Number,
+    category: String
 });
 
 const TestModel = mongoose.model("products", TestSchema);
