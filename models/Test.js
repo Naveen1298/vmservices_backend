@@ -5,7 +5,7 @@ const TestSchema = new mongoose.Schema({
     description1: String,
     description2: String,
     price: Number,
-    deliveryFee: Number,
+    deliveryFee: String,
     imageURL: String,
     offerBanner: String,
     rating: Number,
