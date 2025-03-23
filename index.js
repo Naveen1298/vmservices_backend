@@ -35,6 +35,23 @@ app.get('/products', async (req, res) => {
     }
 });
 
+app.get('/products/:productName', async (req, res) => {
+    try {
+        const { productName } = req.params;
+
+        const product = await TestModel.findOne({ title: productName });
+
+        if (!product) {
+            return res.status(404).json({ message: 'Product not found' });
+        }
+
+        res.json(product);
+    } catch (er) {
+        res.status(500).json({ message: er?.message });
+    }
+});
+
+
 // app.post('/signin', (req, res) => {
 //     UserModel.create(req.body)
 //         .then(product => res.json(product))
