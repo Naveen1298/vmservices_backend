@@ -51,6 +51,24 @@ app.get('/products/:productName', async (req, res) => {
     }
 });
 
+app.put('/products/:productName', async (req, res) => {
+    try {
+        const { productName } = req.params;
+        const updateData = req.body;
+        const updatedProduct = await TestModel.findOneAndUpdate(
+            { title: productName },
+            { $set: updateData },
+            { new: true }   // Return the updated document
+        );
+
+        if (!updatedProduct) {
+            return res.status(404).json({ message: 'Product not found' });
+        }
+        res.json(updatedProduct);
+    } catch (er) {
+        res.status(500).json({ message: er?.message });
+    }
+});
 
 // app.post('/signin', (req, res) => {
 //     UserModel.create(req.body)
