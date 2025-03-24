@@ -51,7 +51,7 @@ app.get('/products/:productName', async (req, res) => {
     }
 });
 
-app.put('/products/:productName', async (req, res) => {
+app.put('/updateProduct/:productName', async (req, res) => {
     try {
         const { productName } = req.params;
         const updateData = req.body;
