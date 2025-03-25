@@ -70,6 +70,20 @@ app.put('/updateProduct/:productName', async (req, res) => {
     }
 });
 
+app.delete('/delete/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const deletedItem = await TestModel.findByIdAndDelete(id);
+    if (!deletedItem) {
+      return res.status(404).json({ message: 'Item not found' });
+    }
+    res.status(200).json({ message: 'Item deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'An error occurred while deleting the item' });
+  }
+});
+
+
 // app.post('/signin', (req, res) => {
 //     UserModel.create(req.body)
 //         .then(product => res.json(product))
