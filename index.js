@@ -51,12 +51,12 @@ app.get('/products/:productName', async (req, res) => {
     }
 });
 
-app.put('/updateProduct/:productName', async (req, res) => {
+app.put('/updateProduct/:id', async (req, res) => {
     try {
-        const { productName } = req.params;
+        const { id } = req.params;
         const updateData = req.body;
-        const updatedProduct = await TestModel.findOneAndUpdate(
-            { title: productName },
+        const updatedProduct = await TestModel.findByIdAndUpdate(
+            id,
             { $set: updateData },
             { new: true }   // Return the updated document
         );
