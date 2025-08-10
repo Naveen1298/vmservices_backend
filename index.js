@@ -35,6 +35,15 @@ app.get('/products', async (req, res) => {
     }
 });
 
+app.get('/feedbacks', async (req,res) => {
+    try {
+        const feedBackList = await ContactModel.find({});
+        res.json(feedBackList);
+    } catch (er) {
+        res.status(500).json({ message: err?.message });
+    }
+});
+
 app.get('/products/:productName', async (req, res) => {
     try {
         const { productName } = req.params;

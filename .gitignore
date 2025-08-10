@@ -1,1 +1,4 @@
 "node_modules/"
+mongoose_logs/
+mongoose_temp/
+node_modules/
