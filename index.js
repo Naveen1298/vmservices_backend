@@ -1,4 +1,5 @@
 const express = require('express');
+const CryptoJS = require('crypto-js');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const TestModel = require('./models/Test');
