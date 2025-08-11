@@ -109,8 +109,9 @@ app.post('/signin', async (req, res) => {
         if (!user) {
             return res.status(401).json({ message: 'Invalid Email' });
         }
-
-        if (user?.password !== password) {
+        const bytes = CryptoJS.AES.decrypt(password, process.env.REACT_APP_SECRET_KEY);
+        const passwordCheck = bytes?.toString(CryptoJS.enc.Utf8);
+        if (user?.password !== passwordCheck) {
             return res.status(401).json({ message: 'Invalid Password' });
         }
 
